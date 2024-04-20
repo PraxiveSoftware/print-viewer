@@ -1,11 +1,11 @@
 {
-  "name": "electron-print-preview",
-  "version": "2.2.0",
+  "name": "print-viewer",
+  "version": "1.0.0",
   "author": {
     "name": "yj",
     "email": "whaleluo@163.com"
   },
-  "description": "A print preview module that simulates chrome browser",
+  "description": "print viewer for praxive",
   "repository": {
     "type": "git",
     "url": "https://github.com/PraxiveSoftware/print-viewer.git"
