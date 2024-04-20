@@ -1,10 +1,10 @@
-import {HtmlConstruct} from "./type";
-export default function (config: HtmlConstruct = {style: "", script: ""}) {
-    return `<!DOCTYPE html>
+import { HtmlConstruct } from './type';
+export default function (config: HtmlConstruct = { style: '', script: '' }) {
+  return `<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8" />
-                <title>打印</title>
+                <title>Print - Praxive</title>
                 <style>
                     .style_display_block {
                         display: block !important;
@@ -107,12 +107,13 @@ export default function (config: HtmlConstruct = {style: "", script: ""}) {
                     }
             
                     .options {
-                        background-color: rgb(248, 249, 250);
+                        background-color: #333333;
                         padding: 30px;
                         width: 370px;
                         height: 100%;
                         display: flex;
                         flex-direction: column;
+                        color: white;
                         justify-content: flex-start;
                         position: relative;
                         -webkit-app-region: drag;
@@ -135,8 +136,8 @@ export default function (config: HtmlConstruct = {style: "", script: ""}) {
                         height: 33px;
                         border: none;
                         border-radius: 5px;
-                        outline-color: rgb(26, 115, 232);
-                        background-color: rgb(241, 243, 244);
+                        background-color: #4a4a4a;
+                        color: white;
                         -webkit-app-region: no-drag;
                         z-index: 999;
                     }
@@ -169,9 +170,14 @@ export default function (config: HtmlConstruct = {style: "", script: ""}) {
             
                     .btn>button:nth-child(2) {
                         color: rgb(26, 115, 232);
-                        background-color: rgb(255, 255, 255);
+                        background-color: transparent;
                         border: solid 1px rgb(26, 115, 232);
                         box-sizing: border-box;
+                    }
+
+                    .btn>button:nth-child(2):hover {
+                        background-color: rgb(26, 115, 232);
+                        color: white;
                     }
             
                     .print-margin-option {
@@ -186,14 +192,14 @@ export default function (config: HtmlConstruct = {style: "", script: ""}) {
                     }
             
                     .printOptions input[type="number"] {
-                        color: black;
+                        color: white;
                         padding-inline-end: 0;
                         width: 34px;
                         height: 22px;
                     }
             
                     .printOptions input[type="number"][disabled] {
-                        color: gray;
+                        color: #999;
                         padding-inline-end: 0;
                         width: 34px;
                         height: 22px;
@@ -247,7 +253,7 @@ export default function (config: HtmlConstruct = {style: "", script: ""}) {
                         <iframe></iframe>
                         <div class="container-loading">
                             <div class="loader">
-                                正在加载预览
+                                Loading preview
                                 <span class="dot dot-1">.</span>
                                 <span class="dot dot-2">.</span>
                                 <span class="dot dot-3">.</span>
@@ -255,49 +261,49 @@ export default function (config: HtmlConstruct = {style: "", script: ""}) {
                         </div>
                         <div class="options">
                             <div class="headerContainer">
-                                <h1 class="title">打印</h1>
+                                <h1 class="title">Print</h1>
                             </div>
                             <div class="printOptions">
                                 <div>
-                                    <span>目标打印机</span>
+                                    <span>Target printer</span>
                                     <select class="printers devices"
                                         onchange="changePrintDevice(this.options[this.selectedIndex].value)"></select>
                                 </div>
                                 <div>
-                                    <span>布局</span>
+                                    <span>Layout</span>
                                     <select class="layout devices" name="layout" disabled="true"
                                         onchange="changeSelectedLayout(this.options[this.selectedIndex].value)">
-                                        <option value="portrait" selected>纵向</option>
-                                        <option value="landscape">横向</option>
+                                        <option value="portrait" selected>Portrait</option>
+                                        <option value="landscape">Landscape</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <span>边距</span>
+                                    <span>Margin</span>
                                     <select onchange="changeSelectedMargin(this.options[this.selectedIndex].value)"
                                         class="printerMargin devices" disabled="true">
-                                        <option value="10">默认</option>
-                                        <option value="0">无</option>
+                                        <option value="10">10mm</option>
+                                        <option value="0">0mm</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <span>纸张尺寸</span>
+                                    <span>Paper size</span>
                                     <select onchange="changeSelectedPageSize(this.options[this.selectedIndex].value)"
                                         class="printerSize devices" disabled="true"></select>
                                 </div>
                                 <div>
-                                    <span>缩放</span>
+                                    <span>Zoom</span>
                                     <input type="number" class="printScale devices" oninput="debounceScale(this.value)"
                                         disabled="false" />
                                 </div>
                                 <div class="sys-print">
                                     <button onclick="printTwo(false)" disabled="false">
-                                        使用系统对话框打印
+                                        Use system dialog to print
                                     </button>
                                 </div>
                             </div>
                             <div class="btn">
-                                <button class="print" onclick="printTwo(true)">打印</button>
-                                <button class="cancel" onclick="cancel()">取消</button>
+                                <button class="print" onclick="printTwo(true)">Print</button>
+                                <button class="cancel" onclick="cancel()">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -490,5 +496,5 @@ export default function (config: HtmlConstruct = {style: "", script: ""}) {
             <script>
             ${config.script}
             </script>
-            </html>`
+            </html>`;
 }
